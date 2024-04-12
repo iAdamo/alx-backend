@@ -5,6 +5,7 @@
    Use user locale
 """
 
+from datetime import datetime
 import pytz
 from flask_babel import Babel
 from typing import Union
@@ -96,7 +97,10 @@ def get_timezone() -> str:
 def index() -> str:
     """render_template: 7-index.html
     """
-    return render_template("7-index.html")
+    timezone = get_timezone()
+    time = datetime.now(pytz.timezone(timezone))
+    formatted_time = time.strftime("%b %d, %Y, %I:%M:%S %p")
+    return render_template("index.html", current_time=formatted_time)
 
 
 if __name__ == '__main__':
