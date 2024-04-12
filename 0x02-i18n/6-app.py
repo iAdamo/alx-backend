@@ -5,7 +5,7 @@
    Use user locale
 """
 
-from typing import Union
+from typing import Dict, Union
 from flask import Flask, render_template, request, g
 from flask_babel import Babel
 
@@ -30,7 +30,7 @@ users = {
 }
 
 
-def get_user() -> Union[dict, None]:
+def get_user() -> Union[Dict, None]:
     """Return a user dictionary or None
     """
     user_id = request.args.get("login_as")
